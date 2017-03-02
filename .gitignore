@@ -6,6 +6,7 @@
 
 !src
 !src/**
+!*.docx
 
 
 !*.txt
