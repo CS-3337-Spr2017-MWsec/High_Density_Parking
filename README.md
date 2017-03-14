@@ -1,4 +1,4 @@
-# High_Density_ParkingDynamic Parking Program 
+# Dynamic Parking Program 
 
 
 Program Description:
