@@ -1,36 +1,35 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
+import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextPane;
-import javax.swing.JMenu;
-import java.awt.List;
 import java.awt.Color;
 import java.awt.SystemColor;
-import java.awt.Label;
-import javax.swing.JLayeredPane;
-import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-public class Parking_Gui extends JFrame {
+public class Parking_Gui  {
 
 	private JPanel contentPane;
+	static JFrame f = new JFrame();
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					Parking_Gui frame = new Parking_Gui();
-					frame.setVisible(true);
+					f.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -44,13 +43,15 @@ public class Parking_Gui extends JFrame {
 	
 	
 	public Parking_Gui() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1078, 746);
+		
+		
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setBounds(100, 100, 1078, 746);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.textHighlight);
 		contentPane.setForeground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		f.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		
@@ -142,8 +143,8 @@ public class Parking_Gui extends JFrame {
 				Dpanel.add(lblReceipt);
 				lblReceipt.setFont(new Font("Tahoma", Font.PLAIN, 20));
 				lblReceipt.setBounds(90, 150, 254, 25);
-				
-				
+				Dpanel.requestFocus();
+				Dpanel.addKeyListener(new Keychecker());
 				
 				
 				
@@ -211,7 +212,8 @@ public class Parking_Gui extends JFrame {
 				lblReceipt.setBounds(90, 150, 254, 25);
 				
 				
-				
+				Rpanel.requestFocus();
+				Rpanel.addKeyListener(new Keychecker());
 				
 				
 				
@@ -223,5 +225,15 @@ public class Parking_Gui extends JFrame {
 		panel.add(btnNewButton_1);
 		
 		
+	}
+	
+	class Keychecker extends KeyAdapter{
+	    @Override
+	    public void keyPressed(KeyEvent event ) {
+	        char ch = event.getKeyChar();
+	        String valueof =  String.valueOf(ch);
+	        
+	       System.out.print(valueof);
+	    }
 	}
 }
