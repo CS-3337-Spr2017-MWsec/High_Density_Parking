@@ -9,8 +9,17 @@ public class Parking {
 
 String ccNumber = "";
 String custName = "";
+ArrayList<Integer> car = new ArrayList<Integer>();
 ArrayList<String> name = new ArrayList<String>();
 ArrayList<String> CCnumber = new ArrayList<String>();
+int counter = 0;
+
+
+
+
+
+counter += 1;
+
 
 System.out.println("Please swipe your card");
 Scanner scan= new Scanner(System.in);
@@ -21,7 +30,7 @@ int middle = raw.indexOf("^");
 int tail = raw.lastIndexOf("^");
 
 // 2. extract acct_no
-ccNumber = raw.substring(head+2, middle);
+ccNumber = raw.substring(head+2, middle); 
 //Testing
 System.out.println("Credit Card Number = " +ccNumber);
 
@@ -33,21 +42,15 @@ System.out.println("Customer Name = " +custName);
 //Add To ArrayList
 name.add(custName);
 CCnumber.add(ccNumber);
-
+car.add(counter);
+System.out.println("Car coming in " + car);
 System.out.println("in the list " + name);
 System.out.println("in the list " + CCnumber);
 
 
-
-
-
-
-
-
-
-scan.close();
-
+//scan.close();
+}
 
 	}
 
-}
+
