@@ -74,6 +74,23 @@ public class Parking_Gui extends JFrame {
 		panel_1.add(lblxThingsHere);
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 //=====Welcome Panel=================================================================================================		
 		
 		JPanel panel = new JPanel();
@@ -135,6 +152,8 @@ public class Parking_Gui extends JFrame {
 				retrieve.setBounds(90, 200, 256, 25);
 				Dpanel.add(retrieve);
 				
+				
+				
 				JButton btndretrieve = new JButton ("Submit");
 				btndretrieve.setBackground(Color.WHITE);
 				btndretrieve.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -154,20 +173,104 @@ public class Parking_Gui extends JFrame {
 						Fpanel.setBounds(26, 33, 427, 641);
 						Fpanel.setLayout(null);
 						
+						
 						contentPane.remove(Dpanel);
 						contentPane.add(Fpanel);
 						contentPane.revalidate();
 						contentPane.repaint();
 						
-						
+
+						String Card1 = retrieve.getText();
+						System.out.println(Card1);
 						
 
 						JLabel lblFinal = new JLabel("Would you like your receipt ?");
-						lblFinal.setBounds(58, 23, 350, 50);
+						lblFinal.setBounds(85, 23, 350, 50);
 						lblFinal.setFont(new Font("Tahoma", Font.PLAIN, 22));
 						Fpanel.add(lblFinal);
 						
-				
+						
+						JButton btnyes = new JButton ("YES");
+						
+						 btnyes.setBackground(Color.WHITE);
+						 btnyes.setFont(new Font("Tahoma", Font.PLAIN, 16));
+						 btnyes.setBounds(90, 230, 109, 50);
+						 Fpanel.add(btnyes);
+						
+						btnyes.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								
+
+							
+						
+						JPanel Receiptpanel = new JPanel();
+						Receiptpanel.setBackground(SystemColor.menu);
+						Receiptpanel.setBounds(26, 33, 427, 641);
+						Receiptpanel.setLayout(null);
+						
+						
+						contentPane.remove(Fpanel);
+						contentPane.add(Receiptpanel);
+						contentPane.revalidate();
+						contentPane.repaint();
+						
+						
+						JLabel lblFinalReceipt = new JLabel("Your Total is : ");
+						lblFinalReceipt.setBounds(58, 238, 350, 50);
+						lblFinalReceipt.setFont(new Font("Tahoma", Font.PLAIN, 22));
+						Receiptpanel.add(lblFinalReceipt);
+						
+						
+						
+							}});
+						
+							
+						JButton btnNo = new JButton ("NO");
+						
+						btnNo.setBackground(Color.WHITE);
+						btnNo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+						btnNo.setBounds(254, 230, 109, 50);
+						Fpanel.add(btnNo);
+						
+						
+						
+						
+
+						btnNo.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								
+						
+								
+								JPanel nopanel = new JPanel();
+								nopanel.setBackground(SystemColor.menu);
+								nopanel.setBounds(26, 33, 427, 641);
+								nopanel.setLayout(null);
+								
+								
+								contentPane.remove(Fpanel);
+								contentPane.add(nopanel);
+								contentPane.revalidate();
+								contentPane.repaint();
+								
+								
+								JLabel lblFinalnoReceipt = new JLabel("Good bye");
+								lblFinalnoReceipt.setBounds(85, 238, 350, 50);
+								lblFinalnoReceipt.setFont(new Font("Tahoma", Font.PLAIN, 50));
+								nopanel.add(lblFinalnoReceipt);
+								
+								
+								
+								
+								
+								
+								
+								
+								
+						
+							}});
+						
+						
+						
 				 
 					}}); 
 				
@@ -234,6 +337,11 @@ public class Parking_Gui extends JFrame {
 				
 				 btndropoff.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						
+						
+						
+						String Card = dropoff.getText();
+						System.out.println(Card);
 						
 						JPanel Timepanel = new JPanel ();
 						Timepanel.setBackground(SystemColor.menu);
