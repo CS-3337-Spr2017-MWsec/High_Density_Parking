@@ -224,7 +224,9 @@ public ArrayList<Location> Clockwise(Location current, Location desired, Locatio
 {
 	ArrayList<Location> r = new ArrayList<Location>();
 	// desired is above
-	
+	/*
+	 * 
+	 */
 	// desired is below
 	
 	// desired is right

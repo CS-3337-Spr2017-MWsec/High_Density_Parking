@@ -63,4 +63,41 @@ public String toString()
 {
 	return "("+x+","+y+")";
 }
+
+public boolean toLeft(Location l)
+{
+	boolean r = false;
+	if(this.x < l.x)
+	{
+		r = true;
+	}
+	return r;
+}
+public boolean toRight(Location l)
+{
+	boolean r = false;
+	if(this.x > l.x)
+	{
+		r = true;
+	}
+	return r;
+}
+public boolean above(Location l)
+{
+	boolean r = false;
+	if(this.y > l.y)
+	{
+		r = true;
+	}
+	return r;
+}
+public boolean below(Location l)
+{
+	boolean r = false;
+	if(this.y < l.y)
+	{
+		r = true;
+	}
+	return r;
+}
 }
