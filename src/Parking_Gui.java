@@ -10,7 +10,9 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
+import java.util.Timer;
 import java.awt.event.ActionEvent;
+import java.util.TimerTask;
 
 
 @SuppressWarnings("serial")
@@ -23,7 +25,7 @@ public class Parking_Gui extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -37,6 +39,8 @@ public class Parking_Gui extends JFrame {
 		});
 	}
 
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -44,7 +48,10 @@ public class Parking_Gui extends JFrame {
 	
 	public Parking_Gui() {
 		
+	
 		
+	
+	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1078, 746);
 		contentPane = new JPanel();
@@ -55,8 +62,7 @@ public class Parking_Gui extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-		
-		
+	
 		
 		
 		
@@ -179,10 +185,30 @@ public class Parking_Gui extends JFrame {
 						contentPane.revalidate();
 						contentPane.repaint();
 						
-
-						String Card1 = retrieve.getText();
-						System.out.println(Card1);
 						
+						
+						String CCard = retrieve.getText();
+
+						String ccNumber = "";
+						String custName = "";
+						
+
+						String raw = "{%B<acct_no>^<cust_name>^<*>?}";
+						raw = CCard;
+						int head = raw.indexOf("%B");
+						int middle = raw.indexOf("^");
+						int tail = raw.lastIndexOf("^");
+
+						// 2. extract acct_no
+						ccNumber = raw.substring(head+2, middle); 
+						//Testing
+						System.out.println("Credit Card Number = " +ccNumber);
+
+						// 3. extract cust_name
+						custName = raw.substring(middle+1, tail);
+						//Testing
+						System.out.println("Customer Name = " +custName);
+						//System.out.println(Card1);
 
 						JLabel lblFinal = new JLabel("Would you like your receipt ?");
 						lblFinal.setBounds(85, 23, 350, 50);
@@ -208,23 +234,50 @@ public class Parking_Gui extends JFrame {
 						Receiptpanel.setBounds(26, 33, 427, 641);
 						Receiptpanel.setLayout(null);
 						
-						
-						contentPane.remove(Fpanel);
-						contentPane.add(Receiptpanel);
-						contentPane.revalidate();
-						contentPane.repaint();
-						
-						
+					
 						JLabel lblFinalReceipt = new JLabel("Your Total is : ");
 						lblFinalReceipt.setBounds(58, 238, 350, 50);
 						lblFinalReceipt.setFont(new Font("Tahoma", Font.PLAIN, 22));
 						Receiptpanel.add(lblFinalReceipt);
 						
+					   retrieve.setText("");
+						
+							contentPane.remove(Fpanel);
+						    contentPane.add(Receiptpanel);
+							contentPane.revalidate();
+							contentPane.repaint();
+						
+
+							Timer timer = new Timer ();
+							timer.schedule(new TimerTask(){
+
+								@Override
+								public void run() {
+									contentPane.remove(Receiptpanel);
+								    contentPane.add(panel);
+									contentPane.revalidate();
+									contentPane.repaint();
+									
+								}
+									
+									
+									
+							}
+									
+									, 3000,1);
+							
+						
+				
+						
+					
 						
 						
 							}});
 						
-							
+						
+						
+
+					
 						JButton btnNo = new JButton ("NO");
 						
 						btnNo.setBackground(Color.WHITE);
@@ -238,34 +291,41 @@ public class Parking_Gui extends JFrame {
 
 						btnNo.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
-								
-						
-								
 								JPanel nopanel = new JPanel();
 								nopanel.setBackground(SystemColor.menu);
 								nopanel.setBounds(26, 33, 427, 641);
 								nopanel.setLayout(null);
-								
-								
-								contentPane.remove(Fpanel);
-								contentPane.add(nopanel);
-								contentPane.revalidate();
-								contentPane.repaint();
-								
-								
 								JLabel lblFinalnoReceipt = new JLabel("Good bye");
 								lblFinalnoReceipt.setBounds(85, 238, 350, 50);
 								lblFinalnoReceipt.setFont(new Font("Tahoma", Font.PLAIN, 50));
 								nopanel.add(lblFinalnoReceipt);
 								
+								retrieve.setText("");
+								contentPane.remove(Fpanel);
+								contentPane.add(nopanel);
+								contentPane.revalidate();
+								contentPane.repaint();
 								
+		
 								
-								
-								
-								
-								
-								
-								
+
+								Timer timer = new Timer ();
+								timer.schedule(new TimerTask(){
+
+									@Override
+									public void run() {
+										contentPane.remove(nopanel);
+									    contentPane.add(panel);
+										contentPane.revalidate();
+										contentPane.repaint();
+										
+									}
+										
+										
+										
+								}
+										
+										, 3000,1);
 						
 							}});
 						
@@ -340,15 +400,35 @@ public class Parking_Gui extends JFrame {
 						
 						
 						
-						String Card = dropoff.getText();
-						System.out.println(Card);
+
+						String Card1 = dropoff.getText();
+						String ccNumber = "";
+						String custName = "";
+						
+
+						String raw = "{%B<acct_no>^<cust_name>^<*>?}";
+						raw = Card1;
+						int head = raw.indexOf("%B");
+						int middle = raw.indexOf("^");
+						int tail = raw.lastIndexOf("^");
+
+						// 2. extract acct_no
+						ccNumber = raw.substring(head+2, middle); 
+						//Testing
+						System.out.println("Credit Card Number = " +ccNumber);
+
+						// 3. extract cust_name
+						custName = raw.substring(middle+1, tail);
+						//Testing
+						System.out.println("Customer Name = " +custName);
+						//System.out.println(Card1);
 						
 						JPanel Timepanel = new JPanel ();
 						Timepanel.setBackground(SystemColor.menu);
 						Timepanel.setBounds(26, 33, 427, 641);
 						Timepanel.setLayout(null);
 						
-						
+						dropoff.setText("");
 						contentPane.remove(Rpanel);
 						contentPane.add(Timepanel);
 						contentPane.revalidate();
@@ -360,7 +440,7 @@ public class Parking_Gui extends JFrame {
 						timelbl.setFont(new Font("Tahoma", Font.PLAIN, 22));
 						Timepanel.add(timelbl);
 						
-						
+// 30 minutes chosen================================================================================================================						
 						
 						JButton Thirty_mins = new JButton("30 Mins");
 						Thirty_mins.setBackground(Color.WHITE);
@@ -368,33 +448,189 @@ public class Parking_Gui extends JFrame {
 						Thirty_mins.setBounds(50, 230, 130, 50);
 						Timepanel.add(Thirty_mins);
 						
+						Thirty_mins.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								
+						int _30_min = 30;
+						dropoff.setText("");
+						Timer timer = new Timer ();
+						timer.schedule(new TimerTask(){
+
+							@Override
+							public void run() {
+								contentPane.remove(Timepanel);
+							    contentPane.add(panel);
+								contentPane.revalidate();
+								contentPane.repaint();
+								
+							}
+								
+								
+								
+						}
+								
+								, 3000,1);
+						
+								
+								
+							}});
+						
+						
+// one hour chosen =================================================================================================================						
+						
 						JButton one_hour = new JButton("1 Hrs");
 						one_hour.setBackground(Color.WHITE);
 						one_hour.setFont(new Font("Tahoma", Font.PLAIN, 16));
 						one_hour.setBounds(200, 230, 130, 50);
 						Timepanel.add(one_hour);
 				
-					
+						
+						
+						one_hour.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								
+						int _1_hr = 60;
+						dropoff.setText("");
+						Timer timer = new Timer ();
+						timer.schedule(new TimerTask(){
+
+							@Override
+							public void run() {
+								contentPane.remove(Timepanel);
+							    contentPane.add(panel);
+								contentPane.revalidate();
+								contentPane.repaint();
+								
+							}
+								
+								
+								
+						}
+								
+								, 3000,1);
+						
+								
+								
+							}});
+						
+						
+// 2 hour chosen ==================================================================================================================					
 				
 						JButton two_hour = new JButton("2 Hrs");
 						two_hour.setBackground(Color.WHITE);
 						two_hour.setFont(new Font("Tahoma", Font.PLAIN, 16));
 						two_hour.setBounds(50, 290, 130, 50);
 						Timepanel.add(two_hour);
+						
+						two_hour.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								
+						int _2_hr = 120;
+						dropoff.setText("");
+						Timer timer = new Timer ();
+						timer.schedule(new TimerTask(){
+
+							@Override
+							public void run() {
+								contentPane.remove(Timepanel);
+							    contentPane.add(panel);
+								contentPane.revalidate();
+								contentPane.repaint();
+								
+							}
+								
+								
+								
+						}
+								
+								, 3000,1);
+						
+								
+								
+							}});
+						
+						
+						
+						
+						
+						
+//  3 hour chosen ====================================================================================================================						
 				
 						JButton three_hour = new JButton("3 Hrs");
 						three_hour.setBackground(Color.WHITE);
 						three_hour.setFont(new Font("Tahoma", Font.PLAIN, 16));
 						three_hour.setBounds(200, 290, 130, 50);
 						Timepanel.add(three_hour);
-				
+
+						three_hour.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								
+						int _3_hr = 180;
+						dropoff.setText("");
+						Timer timer = new Timer ();
+						timer.schedule(new TimerTask(){
+
+							@Override
+							public void run() {
+								contentPane.remove(Timepanel);
+							    contentPane.add(panel);
+								contentPane.revalidate();
+								contentPane.repaint();
+								
+							}
+								
+								
+								
+						}
+								
+								, 3000,1);
+						
+								
+								
+							}});	
+
+						
+						
+						
+						
+						
+						
+						
+						
+						
+// 4 hour chosen=====================================================================================================================
 						JButton four_hour = new JButton("4 Hrs");
 						four_hour.setBackground(Color.WHITE);
 						four_hour.setFont(new Font("Tahoma", Font.PLAIN, 16));
 						four_hour.setBounds(125, 350, 130, 50);
 						Timepanel.add(four_hour);
 				
+						four_hour.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								
+						int _4_hr = 240;
+						dropoff.setText("");
+						Timer timer = new Timer ();
+						timer.schedule(new TimerTask(){
+
+							@Override
+							public void run() {
+								contentPane.remove(Timepanel);
+							    contentPane.add(panel);
+								contentPane.revalidate();
+								contentPane.repaint();
+								
+							}
+								
+								
+								
+						}
+								
+								, 3000,1);
 						
+								
+								
+							}});
 						
 						
 						
@@ -413,7 +649,16 @@ public class Parking_Gui extends JFrame {
 		panel.add(btnNewButton_1);
 		
 		
+		
+		
+		
+		
+		
+		
 	}
 	
 	
+	
+	
 }
+
